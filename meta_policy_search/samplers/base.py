@@ -151,6 +151,10 @@ class SampleProcessor(object):
             if experiment:
                 experiment.log_metric("maxReturn", np.max(undiscounted_returns))
                 experiment.log_metric("MinReturn", np.min(undiscounted_returns))
+                experiment.log_metric('AverageReturn', np.mean(undiscounted_returns))
+                experiment.log_metric('StdReturn', np.std(undiscounted_returns))
+                experiment.log_metric('AverageDiscountedReturn', average_discounted_return)
+                experiment.log_metric('StdReturn', np.std(undiscounted_returns))
 
     def _compute_advantages(self, paths, all_path_baselines):
         assert len(paths) == len(all_path_baselines)
